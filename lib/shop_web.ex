@@ -17,7 +17,7 @@ defmodule ShopWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
+  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt uploads)
 
   def router do
     quote do
@@ -53,6 +53,14 @@ defmodule ShopWeb do
     quote do
       use Phoenix.LiveView,
         layout: {ShopWeb.Layouts, :app}
+
+      def ok(p) do
+        {:ok, p}
+      end
+
+      def noreply(p) do
+        {:noreply, p}
+      end
 
       unquote(html_helpers())
     end
